@@ -455,7 +455,7 @@ if ($show_request_button && !empty($token_record) && $tipo_accesso == 'otp') {
     <div class="login-box card-center-medium">
         <div class="card card-primary shadow-lg">
             <div class="card-header text-center bg-light py-4">
-                <img src="'.App::getPaths()['img'].'/logo_completo.png" alt="'.tr('OpenSTAManager, il software gestionale open source per assistenza tecnica e fatturazione elettronica').'" class="img-fluid" style="max-width: 85%;">
+                <img src="'.App::getPaths()['img'].'/logo_completo.png" alt="'.tr('Safix, il gestionale per assistenza tecnica e fatturazione elettronica').'" class="img-fluid" style="max-width: 85%;">
             </div>
 
             <div class="card-body pt-4">
@@ -590,7 +590,7 @@ if ($show_request_button && !empty($token_record) && $tipo_accesso == 'otp') {
         <div class="login-box card-center-medium">
             <div class="card card-primary shadow-lg">
                 <div class="card-header text-center bg-light py-4">
-                    <img src="'.App::getPaths()['img'].'/logo_completo.png" alt="'.tr('OpenSTAManager, il software gestionale open source per assistenza tecnica e fatturazione elettronica').'" class="img-fluid" style="max-width: 85%;">
+                    <img src="'.App::getPaths()['img'].'/logo_completo.png" alt="'.tr('Safix, il gestionale per assistenza tecnica e fatturazione elettronica').'" class="img-fluid" style="max-width: 85%;">
                 </div>
 
                 <div class="card-body pt-4">
@@ -760,7 +760,7 @@ if ($show_request_button && !empty($token_record) && $tipo_accesso == 'otp') {
     <div class="login-box card-center-medium">
         <div class="card card-info shadow-lg">
             <div class="card-header text-center bg-light py-4">
-                <img src="'.App::getPaths()['img'].'/logo_completo.png" alt="'.tr('OpenSTAManager, il software gestionale open source per assistenza tecnica e fatturazione elettronica').'" class="img-fluid" style="max-width: 85%;">
+                <img src="'.App::getPaths()['img'].'/logo_completo.png" alt="'.tr('Safix, il gestionale per assistenza tecnica e fatturazione elettronica').'" class="img-fluid" style="max-width: 85%;">
             </div>
 
             <div class="card-body pt-4">
@@ -875,7 +875,7 @@ if ($show_request_button && !empty($token_record) && $tipo_accesso == 'otp') {
     <div class="login-box card-center-medium">
         <div class="card card-warning shadow-lg">
             <div class="card-header text-center bg-light py-4">
-                <img src="'.App::getPaths()['img'].'/logo_completo.png" alt="'.tr('OpenSTAManager, il software gestionale open source per assistenza tecnica e fatturazione elettronica').'" class="img-fluid" style="max-width: 85%;">
+                <img src="'.App::getPaths()['img'].'/logo_completo.png" alt="'.tr('Safix, il gestionale per assistenza tecnica e fatturazione elettronica').'" class="img-fluid" style="max-width: 85%;">
             </div>
 
             <div class="card-body pt-4">

@@ -132,13 +132,13 @@ $img = App::getPaths()['img'];
 echo '
 <div class="card card-center-large shadow-lg" style="max-width: 1200px; margin: 3% auto; border-radius: 8px; border: none; opacity: 0; animation: fadeIn 0.5s forwards;">
     <div class="card-header text-center">
-        <img src="'.$img.'/logo_completo.png" style="max-width: 280px;" alt="'.tr('OSM Logo').'">
+        <img src="'.$img.'/logo_completo.png" style="max-width: 280px;" alt="'.tr('Safix').'">
     </div>
 
     <div class="card-body" style="padding: 30px;">
         <div class="text-center mb-4">
             <h4 style="color: #3c8dbc; font-weight: 600;">'.tr('Configurazione iniziale del gestionale').'</h4>
-            <p class="text-muted">'.tr('Completa i campi seguenti per iniziare a utilizzare OpenSTAManager').'</p>
+            <p class="text-muted">'.tr('Completa i campi seguenti per iniziare a utilizzare Safix').'</p>
         </div>
 
         <form action="" method="post" id="init-form" enctype="multipart/form-data">

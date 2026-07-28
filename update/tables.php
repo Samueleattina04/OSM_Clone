@@ -120,6 +120,7 @@ return [
     'fe_tipi_ritenuta',
     'in_interventi',
     'in_interventi_tags',
+    'in_valutazioni',
     'in_interventi_tecnici',
     'in_interventi_tecnici_assegnati',
     'in_righe_interventi',

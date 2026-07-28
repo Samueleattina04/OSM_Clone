@@ -17,8 +17,8 @@ use Illuminate\Auth\AuthenticationException;
 use Symfony\Component\Serializer\NameConverter\SnakeCaseToCamelCaseNameConverter;
 
 return [
-    'title' => 'OpenSTAManager API',
-    'description' => 'API for OpenSTAManager application',
+    'title' => 'Safix API',
+    'description' => 'API for Safix application',
     'version' => '1.0.0',
     'show_webby' => true,
 

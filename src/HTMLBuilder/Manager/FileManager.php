@@ -158,7 +158,7 @@ class FileManager implements ManagerInterface
                     } else {
                         $result .= '
 
-                <i class="fa fa-user-circle-o attachment-img tip" title="'.tr('OpenSTAManager').'"></i>';
+                <i class="fa fa-user-circle-o attachment-img tip" title="'.tr('Safix').'"></i>';
                     }
 
                     $result .= '

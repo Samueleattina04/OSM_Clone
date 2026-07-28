@@ -56,7 +56,7 @@ class CronStatusHook extends Manager
                     $data_formattata = $data_ultima_esecuzione->format('d/m/Y H:i:s');
                     $document_root = $_SERVER['DOCUMENT_ROOT'] ?? base_dir();
 
-                    $message = tr('Sembra che il cron di OpenSTAManager non sia in esecuzione (ultima esecuzione il _DATA_).', [
+                    $message = tr('Sembra che il cron di Safix non sia in esecuzione (ultima esecuzione il _DATA_).', [
                         '_DATA_' => $data_formattata,
                         '_DOCUMENT_ROOT_' => $document_root,
                     ]);

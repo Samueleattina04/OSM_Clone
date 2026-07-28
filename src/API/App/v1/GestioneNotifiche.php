@@ -157,7 +157,7 @@ class GestioneNotifiche extends Resource implements RetrieveInterface
                     'token' => $token['token'],
                     'platform' => $token['platform'],
                     'message' => $messaggio,
-                    'title' => 'OpenSTAManager',
+                    'title' => 'Safix',
                     'data' => [
                         'operation_id' => $operazione['id'],
                         'operation_type' => $operazione['op'],

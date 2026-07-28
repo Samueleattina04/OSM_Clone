@@ -43,6 +43,10 @@ echo '
     <i class="fa fa-'.(!empty($info_firma) ? 'refresh' : 'desktop').'"></i> '.$frase.'...
 </button>
 
+<button type="button" class="btn btn-warning" onclick="richiediValutazione()">
+    <i class="fa fa-star"></i> '.tr('Richiedi valutazione').'
+</button>
+
 <script>
 function duplicaIntervento() {
     openModal("'.tr('Duplica attività').'", "'.$module->fileurl('modals/duplicazione.php').'?id_module='.$id_module.'&id_record='.$id_record.'");
@@ -50,6 +54,27 @@ function duplicaIntervento() {
 
 function anteprimaFirma() {
     openModal("'.tr('Anteprima e firma').'", "'.$module->fileurl('modals/anteprima_firma.php').'?id_module='.$id_module.'&id_record='.$id_record.'&anteprima=1");
+}
+
+function richiediValutazione() {
+    $.post(globals.rootdir + "/actions.php", {
+        id_module: '.$id_module.',
+        id_record: '.$id_record.',
+        op: "richiedi_valutazione",
+    }).done(function (response) {
+        var link = (typeof response === "object" && response) ? response.link : "";
+
+        swal({
+            title: "'.tr('Richiesta di valutazione').'",
+            html: "'.tr('Condividi questo link con il cliente').':<br><br><input type=\"text\" class=\"form-control\" id=\"swal-link\" value=\"\" readonly>",
+            onOpen: function () {
+                document.getElementById("swal-link").value = link;
+            },
+            confirmButtonText: "'.tr('Copia link').'",
+        }).then(function () {
+            navigator.clipboard.writeText(link);
+        });
+    });
 }
 </script>';
 

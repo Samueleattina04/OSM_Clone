@@ -232,6 +232,7 @@ switch (post('op')) {
         }
 
         $descrizioni_tipi = $anagrafica->tipi()->get();
+        $tipi = [];
         foreach ($descrizioni_tipi as $tipo) {
             $tipi[] = $tipo->getTranslation('title');
         }

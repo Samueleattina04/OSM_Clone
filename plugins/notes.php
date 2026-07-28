@@ -49,7 +49,7 @@ if (!empty($notes) && !$notes->isEmpty()) {
         } else {
             echo '
 
-                        <i class="fa fa-user-circle-o direct-chat-img fa-3x" alt="'.tr('OpenSTAManager').'"></i>';
+                        <i class="fa fa-user-circle-o direct-chat-img fa-3x" alt="'.tr('Safix').'"></i>';
         }
 
         echo '

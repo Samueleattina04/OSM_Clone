@@ -25,21 +25,21 @@ if (!$creation) {
 
         "dir" : "ltr",
         "lang" : "'.((empty($lang) || $lang == '|lang|') ? 'it-IT' : str_replace('_', '-', $lang)).'",
-        "name" : "'.tr('OpenSTAManager').'",
+        "name" : "'.tr('Safix').'",
         "scope" : "'.((empty(base_path_osm()) || base_path_osm() == '/') ? '' : '.').'",
         "display" : "fullscreen",
         "start_url" : "'.((empty(base_path_osm()) || base_path_osm() == '/') ? '/' : './').'",
-        "short_name" : "OSM",
-        "theme_color" : "transparent",
-        "description" : "'.tr('OpenSTAManager').'",
+        "short_name" : "Safix",
+        "theme_color" : "#1e1b4b",
+        "description" : "'.tr('Safix').'",
         "orientation" : "any",
         "background_color" : "transparent",
         "generated" : "true",
         "icons" : [
             {
-                "src": "'.App::getPaths()['img'].'/logo_completo.png",
+                "src": "'.App::getPaths()['img'].'/logo_header.png",
                 "type": "image/png",
-                "sizes": "489x91"
+                "sizes": "250x250"
             }
         ]
 }';

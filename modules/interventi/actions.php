@@ -38,6 +38,7 @@ use Modules\Interventi\Intervento;
 use Modules\Interventi\Stato;
 use Modules\Iva\Aliquota;
 use Modules\TipiIntervento\Tipo as TipoSessione;
+use Modules\Valutazioni\Valutazione;
 use Plugins\ComponentiImpianti\Componente;
 use Plugins\ListinoClienti\DettaglioPrezzo;
 use Plugins\PianificazioneInterventi\Promemoria;
@@ -1658,6 +1659,19 @@ switch (post('op')) {
         } else {
             flash()->warning(tr('Nessun prezzo modificato!'));
         }
+
+        break;
+
+    case 'richiedi_valutazione':
+        $valutazione_esistente = Valutazione::where('id_intervento', $intervento->id)->whereNull('risposta_at')->first();
+        $valutazione = $valutazione_esistente ?: Valutazione::richiedi($intervento);
+
+        if (isAjaxRequest()) {
+            echo json_encode(['link' => $valutazione->link]);
+            exit;
+        }
+
+        flash()->info(tr('Richiesta di valutazione pronta da condividere con il cliente'));
 
         break;
 }

@@ -507,7 +507,7 @@ if (empty($creation) && (!file_exists('config.inc.php') || !$valid_config)) {
     echo '
     <div class="config-section-content">
         <h4 class="config-section-header">'.tr('Benvenuto in _NAME_!', [
-        '_NAME_' => '<strong>OpenSTAManager</strong>',
+        '_NAME_' => '<strong>Safix</strong>',
     ]).'</h4>
         <p>'.tr("Prima di procedere con l'installazione, verifica che il sistema soddisfi i seguenti requisiti").'.</p>
         <p class="config-info-text"><i class="fa fa-info-circle text-info mr-1"></i> '.tr('Le impostazioni PHP possono essere modificate nel file _FILE_', [
@@ -526,7 +526,7 @@ if (empty($creation) && (!file_exists('config.inc.php') || !$valid_config)) {
                     <div id="step-2">
                         <div class="config-section-content">
                             <h4 class="config-section-header">'.tr('Licenza del software').'</h4>
-                            <p>'.tr('OpenSTAManager è tutelato dalla licenza _LICENSE_', [
+                            <p>'.tr('Safix (basato su OpenSTAManager) è tutelato dalla licenza _LICENSE_', [
         '_LICENSE_' => '<strong>GPL 3.0</strong>',
     ]).':</p>
                         </div>
@@ -542,7 +542,7 @@ if (empty($creation) && (!file_exists('config.inc.php') || !$valid_config)) {
                         <div class="config-acceptance-box">
                             <div class="row">
                                 <div class="col-md-8">
-                                    <span class="config-acceptance-text" title="'.tr('Visiona e accetta la licenza per proseguire').'">'.tr('Accetti la licenza GPLv3 di OpenSTAManager?').'*</span>
+                                    <span class="config-acceptance-text" title="'.tr('Visiona e accetta la licenza per proseguire').'">'.tr('Accetti la licenza GPLv3?').'*</span>
                                 </div>
 
                                 <form class="col-md-4">

@@ -2,7 +2,9 @@
 
 $database = database();
 
-error_reporting(E_ALL & ~E_WARNING & ~E_CORE_WARNING & ~E_NOTICE & ~E_USER_DEPRECATED & ~E_STRICT);
+// 2048 corrisponde alla deprecata costante E_STRICT: il valore letterale evita
+// il notice di deprecazione emesso da PHP 8.4+ quando si referenzia la costante.
+error_reporting(E_ALL & ~E_WARNING & ~E_CORE_WARNING & ~E_NOTICE & ~E_USER_DEPRECATED & ~2048);
 
 // Fix del calcolo del bollo
 $fatture = $database->fetchArray('SELECT id, bollo, split_payment FROM co_documenti');

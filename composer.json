@@ -113,6 +113,7 @@
             "Modules\\Preventivi\\": ["modules/preventivi/custom/src/", "modules/preventivi/src/"],
             "Modules\\Contratti\\": ["modules/contratti/custom/src/", "modules/contratti/src/"],
             "Modules\\Interventi\\": ["modules/interventi/custom/src/", "modules/interventi/src/"],
+            "Modules\\Valutazioni\\": ["modules/valutazioni/custom/src/", "modules/valutazioni/src/"],
             "Modules\\Pagamenti\\": ["modules/pagamenti/custom/src/", "modules/pagamenti/src/"],
             "Modules\\Statistiche\\": ["modules/statistiche/custom/src/", "modules/statistiche/src/"],
             "Modules\\Scadenzario\\": ["modules/scadenzario/custom/src/", "modules/scadenzario/src/"],

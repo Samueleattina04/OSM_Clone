@@ -138,7 +138,9 @@ if (!API\Response::isAPIRequest()) {
 // Disabilita i messaggi nativi di PHP
 ini_set('display_errors', 0);
 // Ignora gli avvertimenti e le informazioni relative alla deprecazione di componenti
-error_reporting(E_ALL & ~E_WARNING & ~E_CORE_WARNING & ~E_NOTICE & ~E_USER_DEPRECATED & ~E_STRICT);
+// 2048 corrisponde alla deprecata costante E_STRICT: il valore letterale evita
+// il notice di deprecazione emesso da PHP 8.4+ quando si referenzia la costante.
+error_reporting(E_ALL & ~E_WARNING & ~E_CORE_WARNING & ~E_NOTICE & ~E_USER_DEPRECATED & ~2048);
 
 $pattern = '[%datetime%] %channel%.%level_name%: %message% %context%'.PHP_EOL.'%extra% '.PHP_EOL;
 $monologFormatter = new Monolog\Formatter\LineFormatter($pattern);
