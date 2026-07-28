@@ -1,0 +1,144 @@
+/*
+ * Safix: gestionale per l'assistenza tecnica e la fatturazione elettronica
+ * Copyright (C) DevCode s.r.l. (base OpenSTAManager, GPL-3.0-or-later)
+ * Modifiche per il rebranding Safix: Copyright (C) Samuele Attinà
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+:root {
+    --safix-indigo: #1e1b4b;
+    --safix-indigo-light: #312e81;
+    --safix-teal: #0ea5a0;
+    --safix-teal-light: #14b8a6;
+    --safix-bg: #f4f6f9;
+    --safix-radius: 10px;
+    --safix-shadow: 0 2px 10px rgba(30, 27, 75, 0.08);
+    --safix-shadow-hover: 0 6px 20px rgba(30, 27, 75, 0.12);
+}
+
+body {
+    background: var(--safix-bg);
+}
+
+/* Navbar superiore */
+.main-header.navbar {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Sidebar principale con gradiente brand */
+.main-sidebar {
+    background: linear-gradient(180deg, var(--safix-indigo) 0%, #14123a 100%) !important;
+}
+
+.brand-link {
+    background: rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
+.main-sidebar .nav-sidebar > .nav-item > .nav-link:hover {
+    background: rgba(14, 165, 160, 0.18);
+    border-radius: 6px;
+}
+
+.main-sidebar .nav-sidebar > .nav-item > .nav-link.active {
+    box-shadow: inset 3px 0 0 var(--safix-teal);
+}
+
+/* Card e box: angoli piu' morbidi e ombra leggera */
+.card,
+.box {
+    border-radius: var(--safix-radius);
+    box-shadow: var(--safix-shadow);
+    border: 1px solid rgba(30, 27, 75, 0.06);
+    transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: var(--safix-shadow-hover);
+}
+
+.card.card-outline.card-primary {
+    border-top: 3px solid var(--safix-teal);
+}
+
+.card-header {
+    border-top-left-radius: var(--safix-radius) !important;
+    border-top-right-radius: var(--safix-radius) !important;
+}
+
+/* Bottoni primari con il colore del brand */
+.btn-primary {
+    background-color: var(--safix-indigo-light);
+    border-color: var(--safix-indigo-light);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--safix-indigo);
+    border-color: var(--safix-indigo);
+}
+
+.btn-info,
+.badge-info {
+    background-color: var(--safix-teal);
+    border-color: var(--safix-teal);
+}
+
+.btn-info:hover {
+    background-color: var(--safix-teal-light);
+    border-color: var(--safix-teal-light);
+}
+
+/* Pagina di login */
+.login-page {
+    background: linear-gradient(135deg, var(--safix-indigo) 0%, #0f2e3d 55%, var(--safix-teal) 100%);
+}
+
+.login-box .card {
+    border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    border: none;
+}
+
+.login-logo,
+.login-box-msg {
+    color: #fff;
+}
+
+/* Badge di stato licenza (usato dal modulo licenze Safix) */
+.safix-license-badge {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.safix-license-badge.status-active {
+    background: rgba(14, 165, 160, 0.15);
+    color: #0d7d79;
+}
+
+.safix-license-badge.status-expiring {
+    background: rgba(255, 193, 7, 0.18);
+    color: #916b00;
+}
+
+.safix-license-badge.status-expired,
+.safix-license-badge.status-unlicensed {
+    background: rgba(220, 53, 69, 0.15);
+    color: #a51c2c;
+}

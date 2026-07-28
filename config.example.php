@@ -69,6 +69,24 @@ $assets = [
     'js' => [],
 ];
 
+// Licenza e abbonamento Safix (da personalizzare per ciascuna installazione cliente)
+$license = [
+    // Nome del cliente a cui è intestata la licenza
+    'licensed_to' => '',
+    // Se true, la licenza base (una tantum) risulta attivata
+    'active' => false,
+    // Data di attivazione della licenza base (Y-m-d)
+    'activated_at' => '',
+    // Se true, l'abbonamento mensile di manutenzione/assistenza è attivo
+    'maintenance_active' => false,
+    // Data di scadenza del prossimo rinnovo dell'abbonamento di manutenzione (Y-m-d)
+    'maintenance_expires_at' => '',
+    // Elenco delle funzionalità/moduli aggiuntivi sbloccati a pagamento per questo cliente
+    'modules' => [],
+    // Contatto a cui il cliente deve rivolgersi per rinnovi o richieste di nuove funzionalità
+    'support_email' => 'samueleattina04@gmail.com',
+];
+
 // Configura il limite di tempo di esecuzione del file cron.php
 $php_time_limit = '';
 

@@ -269,7 +269,7 @@ if (Services::isEnabled()) {
                             </td>
                             <td class="text-right">';
         if ($totale_in_scadenza > 0 || $totale_scaduti > 0) {
-            echo '<a href="https://marketplace.devcode.it/" target="_blank" id="btn_rinnova" class="btn btn-sm btn-warning"><i class="fa fa-shopping-cart mr-1"></i>'.tr('Rinnova').'</a>';
+            echo '<a href="'.base_path_osm().'/info.php" id="btn_rinnova" class="btn btn-sm btn-warning"><i class="fa fa-shopping-cart mr-1"></i>'.tr('Rinnova').'</a>';
         }
         echo '
                             </td>

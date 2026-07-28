@@ -37,7 +37,7 @@ if (empty($pageTitle)) {
     } elseif ($structure) {
         $pageTitle = $structure->getTranslation('title');
     } else {
-        $pageTitle = tr('OpenSTAManager');
+        $pageTitle = tr('Safix');
     }
 }
 
@@ -54,8 +54,8 @@ echo '<!DOCTYPE html>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
         <meta name="robots" content="noindex,nofollow">
-        <meta name="description" content="'.tr('OpenSTAManager, il software gestionale open source per assistenza tecnica e fatturazione elettronica.').'">
-        <meta name="author" content="DevCode s.r.l.">
+        <meta name="description" content="'.tr('Safix, il gestionale per assistenza tecnica e fatturazione elettronica.').'">
+        <meta name="author" content="Safix">
 
 		<link href="'.$paths['img'].'/favicon.png" rel="icon" type="image/x-icon" />';
 
@@ -507,8 +507,8 @@ if (AuthOSM::check()) {
 
             <!-- Main Sidebar Container -->
             <aside class="main-sidebar '.$theme.' elevation-4">
-                <a href="'.tr('https://www.openstamanager.com').'" class="brand-link" title="'.tr("Il gestionale open source per l'assistenza tecnica e la fatturazione elettronica").'" target="_blank">
-                    <img src="'.App::getPaths()['img'].'/'.(!empty($hide_sidebar) ? 'logo.png' : 'logo_completo.png').'" class="brand-image" alt="'.tr("Il gestionale open source per l'assistenza tecnica e la fatturazione elettronica").'" id="sidebar-logo">
+                <a href="'.base_path_osm().'/index.php" class="brand-link" title="'.tr("Safix, il gestionale per l'assistenza tecnica e la fatturazione elettronica").'">
+                    <img src="'.App::getPaths()['img'].'/'.(!empty($hide_sidebar) ? 'logo.png' : 'logo_sidebar.png').'" class="brand-image" alt="'.tr("Safix, il gestionale per l'assistenza tecnica e la fatturazione elettronica").'" id="sidebar-logo">
                     <span class="brand-text font-weight-light">&nbsp;</span>
 
                 </a>

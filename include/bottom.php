@@ -26,7 +26,7 @@ if (AuthOSM::check()) {
             </div><!-- /.content-wrapper -->
 
 			<footer class="main-footer">
-                <a class="hidden-xs" href="'.tr('https://www.openstamanager.com').'" title="'.tr("Il gestionale open source per l'assistenza tecnica e la fatturazione elettronica").'." target="_blank"><strong>'.tr('OpenSTAManager').'</strong></a>
+                <a class="hidden-xs" href="'.base_path_osm().'/info.php" title="'.tr("Safix, il gestionale per l'assistenza tecnica e la fatturazione elettronica").'."><strong>'.tr('Safix').'</strong></a>
 				<span class="pull-right hidden-xs">
                     <strong>'.tr('Versione').'</strong> '.$version.'
                     <small class="text-secondary">('.(!empty($revision) ? $revision : tr('In sviluppo')).')</small>

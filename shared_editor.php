@@ -165,8 +165,8 @@ echo '
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom mb-3" style="box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: fixed; top: 0; left: 0; right: 0; z-index: 1030;">
     <div class="container-fluid">
         <!-- Logo e nome modulo a sinistra -->
-        <a href="'.tr('https://www.openstamanager.com').'" class="brand-link" title="'.tr("Il gestionale open source per l'assistenza tecnica e la fatturazione elettronica").'" target="_blank">
-            <img src="'.$rootdir.'/assets/dist/img/logo_completo.png" class="brand-image" alt="'.tr("Il gestionale open source per l'assistenza tecnica e la fatturazione elettronica").'">
+        <a href="'.$rootdir.'/index.php" class="brand-link" title="'.tr("Safix, il gestionale per l'assistenza tecnica e la fatturazione elettronica").'">
+            <img src="'.$rootdir.'/assets/dist/img/logo_completo.png" class="brand-image" alt="'.tr("Safix, il gestionale per l'assistenza tecnica e la fatturazione elettronica").'">
             <span class="brand-text font-weight-light">&nbsp;</span>
 
         </a>

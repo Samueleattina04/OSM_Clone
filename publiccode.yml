@@ -1,10 +1,9 @@
 publiccodeYmlVersion: 0.4.0
-name: OpenSTAManager
-url: https://github.com/devcode-it/openstamanager/
-landingURL: https://openstamanager.com
+name: Safix
+url: https://github.com/Samueleattina04/OSM_Clone/
 softwareVersion: 2.10.4
 releaseDate: 2026-04-27
-logo: https://shop.openstamanager.com/wp-content/uploads/2015/04/logo_full-2.png
+logo: assets/src/img/logo.png
 platforms:
   - web
 categories:
@@ -15,7 +14,7 @@ developmentStatus: stable
 softwareType: standalone/web
 description:
   it-IT:
-    localisedName: OpenSTAManager
+    localisedName: Safix
     shortDescription: Il gestionale per l'assistenza tecnica e la fatturazione elettronica
     longDescription: >-
       E' un software gestionale per l'assistenza tecnica e la fatturazione
@@ -37,8 +36,6 @@ description:
       Fra i vari documenti, è possibile evadere singolarmente o parzialmente le
       righe, per avere sempre il controllo di quando è, per esempio, da
       fatturare o da spedire, senza perdere traccia di quanto già evaso.
-    documentation: https://docs.openstamanager.com
-    apiDocumentation: https://api.docs.openstamanager.com/#guida-alla-configurazione-api
     features:
       - crm
       - gestione clienti
@@ -47,9 +44,9 @@ description:
       - anagrafiche
       - fatturazione elettronica
     screenshots:
-      - https://raw.githubusercontent.com/devcode-it/openstamanager/master/assets/src/img/screenshot.jpg
+      - https://raw.githubusercontent.com/Samueleattina04/OSM_Clone/master/assets/src/img/screenshot.jpg
   en:
-    localisedName: OpenSTAManager
+    localisedName: Safix
     shortDescription: The management software for technical assistance and electronic invoicing
     longDescription: >-
       It is a management software for technical assistance and electronic
@@ -79,16 +76,15 @@ description:
       - registries
       - shipment
     screenshots:
-      - https://raw.githubusercontent.com/devcode-it/openstamanager/master/assets/src/img/screenshot.jpg
+      - https://raw.githubusercontent.com/Samueleattina04/OSM_Clone/master/assets/src/img/screenshot.jpg
 legal:
   license: GPL-3.0-or-later
 maintenance:
   type: contract
   contractors:
-    - name: DevCode Srl
+    - name: Safix
       until: 2050-01-01
-      email: info@openstamanager.com
-      website: https://openstamanager.com
+      email: samueleattina04@gmail.com
 localisation:
   localisationReady: true
   availableLanguages:

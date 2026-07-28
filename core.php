@@ -28,7 +28,7 @@ date_default_timezone_set('Europe/Rome');
 $minimum = '8.1.0';
 if (version_compare(phpversion(), $minimum) < 0) {
     echo '
-<p>Stai utilizzando la versione PHP '.phpversion().', non compatibile con OpenSTAManager.</p>
+<p>Stai utilizzando la versione PHP '.phpversion().', non compatibile con Safix.</p>
 
 <p>Aggiorna PHP alla versione >= '.$minimum.'.</p>';
     exit;

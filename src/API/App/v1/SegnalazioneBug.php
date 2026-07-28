@@ -28,7 +28,7 @@ use Notifications\EmailNotification;
 
 class SegnalazioneBug extends Resource implements RetrieveInterface, CreateInterface
 {
-    protected static $bug_email = 'info@openstamanager.com';
+    protected static $bug_email = 'samueleattina04@gmail.com';
 
     public function retrieve($request)
     {

@@ -1,17 +1,20 @@
 {
-    "name": "devcode-it/openstamanager",
-    "description": "Gestionale open-source per assistenza tecnica e fatturazione elettronica",
-    "license": "GPL-3.0",
+    "name": "safix/safix",
+    "description": "Gestionale per assistenza tecnica e fatturazione elettronica",
+    "license": "GPL-3.0-or-later",
     "keywords": [
         "gestionale",
         "assistenza tecnica",
-        "fatturazione elettronica",
-        "open-source"
+        "fatturazione elettronica"
     ],
-    "homepage": "https://www.openstamanager.com/",
+    "homepage": "https://github.com/Samueleattina04/OSM_Clone",
     "authors": [{
+        "name": "Samuele Attinà",
+        "email": "samueleattina04@gmail.com"
+    }, {
         "name": "DevCode s.r.l.",
-        "email": "info@openstamanager.com"
+        "email": "info@openstamanager.com",
+        "role": "Original author (OpenSTAManager, GPL-3.0)"
     }],
     "type": "project",
     "require": {
