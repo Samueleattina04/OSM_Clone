@@ -1,0 +1,223 @@
+<?php
+
+/*
+ * OpenSTAManager: il software gestionale open source per l'assistenza tecnica e la fatturazione
+ * Copyright (C) DevCode s.r.l.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+include_once __DIR__.'/../../core.php';
+
+use Modules\Interventi\Intervento;
+use Modules\Iva\Aliquota;
+
+$d_qta = (int) setting('Cifre decimali per quantità in stampa');
+$d_importi = (int) setting('Cifre decimali per importi in stampa');
+
+$intervento = Intervento::find($record['id']);
+$sessioni = $intervento->sessioni;
+$iva_predefinita = floatval(Aliquota::find(setting('Iva predefinita'))->percentuale);
+
+// Recupera la sede dell'intervento se disponibile
+$nomesede = null;
+if (!empty($intervento['idsede_destinazione'])) {
+    $sedi = $dbo->fetchOne('SELECT nomesede, cap, citta, indirizzo, provincia FROM an_sedi WHERE id = '.prepare($intervento['idsede_destinazione']));
+
+    $nomesede = $sedi['nomesede'];
+    $citta = $sedi['citta'];
+    $indirizzo = $sedi['indirizzo'];
+    $cap = $sedi['cap'];
+    $provincia = $sedi['provincia'];
+} else {
+    // Se non c'è sede, usa l'anagrafica
+    $sedi = $dbo->fetchOne('SELECT cap, citta, indirizzo, provincia FROM an_anagrafiche WHERE idanagrafica = '.prepare($intervento['idanagrafica']));
+
+    $citta = $sedi['citta'];
+    $indirizzo = $sedi['indirizzo'];
+    $cap = $sedi['cap'];
+    $provincia = $sedi['provincia'];
+}
+
+$km = $sessioni->sum('km');
+$ore = $sessioni->sum('ore');
+$imponibile = $tipo == 'interno' ? $intervento->spesa : $intervento->imponibile;
+$sconto = $tipo == 'interno' ? 0 : $intervento->sconto;
+$totale_imponibile = $tipo == 'interno' ? $intervento->spesa : $intervento->totale_imponibile;
+$iva = $tipo == 'interno' ? (($intervento->spesa * $iva_predefinita) / 100) : $intervento->iva;
+$totale_ivato = $tipo == 'interno' ? ($intervento->spesa + $iva) : $intervento->totale;
+
+$somma_km[] = $km;
+$somma_ore[] = $ore;
+$somma_imponibile[] = $imponibile;
+$somma_sconto[] = $sconto;
+$somma_totale_imponibile[] = $totale_imponibile;
+$somma_iva[] = $iva;
+$somma_totale_ivato[] = $totale_ivato;
+
+// Raccogli dati riepilogativi per materiali
+$righe = $intervento->getRighe();
+foreach ($righe as $riga) {
+    $descrizione = $riga->descrizione;
+    $qta = $riga->qta;
+    $um = $riga->um;
+    $prezzo = $tipo == 'interno' ? $riga->costo_unitario : $riga->prezzo_unitario;
+    $totale = $tipo == 'interno' ? $riga->spesa : $riga->totale_imponibile;
+
+    if (!isset($riepilogo_materiali[$descrizione])) {
+        $riepilogo_materiali[$descrizione] = [
+            'qta' => 0,
+            'um' => $um,
+            'prezzo' => $prezzo,
+            'totale' => 0,
+        ];
+    }
+
+    $riepilogo_materiali[$descrizione]['qta'] += $qta;
+    $riepilogo_materiali[$descrizione]['totale'] += $totale;
+}
+
+// Raccogli dati riepilogativi per sessioni (ore per tipo di attività)
+foreach ($sessioni as $sessione) {
+    $tipo_attivita = $sessione->tipo->getTranslation('title');
+    $ore_sessione = $sessione->ore;
+    $prezzo_ore = $tipo == 'interno' ? $sessione->costo_ore_unitario : $sessione->prezzo_ore_unitario;
+    $prezzo_totale = $ore_sessione * $prezzo_ore;
+
+    if (!isset($riepilogo_sessioni[$tipo_attivita])) {
+        $riepilogo_sessioni[$tipo_attivita] = [
+            'ore' => 0,
+            'prezzo_totale' => 0,
+        ];
+    }
+
+    $riepilogo_sessioni[$tipo_attivita]['ore'] += $ore_sessione;
+    $riepilogo_sessioni[$tipo_attivita]['prezzo_totale'] += $prezzo_totale;
+}
+
+$pricing ??= true;
+
+// Informazioni intervento
+echo '
+<tr>
+    <td  style="border-top: 1px solid #ddd;" colspan="7">';
+
+if (dateFormat($intervento->inizio)) {
+    echo '
+        <p><strong>'.tr('Intervento _NUM_ del _DATE_', [
+        '_NUM_' => $intervento->codice,
+        '_DATE_' => dateFormat($intervento->inizio),
+    ]).'</strong></p>';
+} else {
+    echo '
+        <p>'.tr('Promemoria _NUM_', [
+        '_NUM_' => $intervento->codice,
+    ]).'</p>';
+}
+
+echo '
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 50%; padding: 2px 0;">'.$intervento->anagrafica->ragione_sociale.($nomesede ? ' ('.$nomesede.')' : '').'</td>
+                <td style="width: 50%; padding: 2px 0;">'.$indirizzo.' '.$cap.' - '.$citta.' ('.strtoupper((string) $provincia).')</td>
+            </tr>
+            <tr>
+                <td style="width: 50%; padding: 2px 0;">'.$intervento->stato->getTranslation('title').'</td>
+                <td style="width: 50%; padding: 2px 0;">'.tr('Data richiesta').': '.dateFormat($intervento->data_richiesta).'</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding: 2px 0; border-bottom: 1px solid #ddd; border-top: 1px solid #ddd;"><b>'.tr('Richiesta').':</b> '.strip_tags((string) $intervento->richiesta).'</td>';
+if ($intervento->descrizione) {
+    echo '
+            </tr>
+            <tr>
+                <td colspan="2" style="padding: 2px 0; border-bottom: 1px solid #ddd;"><b>'.tr('Descrizione').':</b> '.$intervento->descrizione.'</td>
+            </tr>';
+}
+echo '
+            </tr>
+        </table>';
+
+if (setting('Formato ore in stampa') == 'Sessantesimi') {
+    $ore = Translator::numberToHours($ore);
+} else {
+    $ore = Translator::numberToLocale($ore, $d_qta);
+}
+
+// Sessioni
+if (count($sessioni) > 0) {
+    echo '
+<tr>
+    <th></th>
+    <th style="background-color: #eee" colspan="'.(get('id_print') != 24 ? 3 : 2).'"><small>'.tr('Sessioni').'</small></th>
+    <th class="text-center" style="background-color: #eee"><small>'.tr('Data').'</small></th>
+    <th class="text-center" style="background-color: #eee"><small>'.tr('Inizio').'</small></th>
+    <th class="text-center" style="background-color: #eee"><small>'.tr('Fine').'</small></th>
+</tr>';
+
+    foreach ($sessioni as $sessione) {
+        echo '
+<tr>
+    <td></td>
+    <td colspan="'.(get('id_print') != 24 ? 3 : 2).'"><small>'.$sessione->anagrafica->ragione_sociale.' ('.$sessione->tipo->getTranslation('title').')</small></td>
+    <td class="text-center"><small>'.dateFormat($sessione->orario_inizio).'</small></td>
+    <td class="text-center"><small>'.timeFormat($sessione->orario_inizio).'</small></td>
+    <td class="text-center"><small>'.timeFormat($sessione->orario_fine).'</small></td>
+</tr>';
+    }
+}
+
+// Righe
+$righe = $intervento->getRighe();
+if (!$righe->isEmpty()) {
+    echo '
+<tr>
+    <td></td>
+    <th style="background-color: #eee" colspan="'.(get('id_print') != 24 ? 3 : 2).'"><small>'.tr('Materiale utilizzato e spese aggiuntive').'</small></th>
+    <th class="text-center" style="background-color: #eee"><small>'.tr('Qta').'</small></th>
+    <th class="text-center" style="background-color: #eee"><small>'.($tipo == 'interno' ? tr('Costo unitario') : tr('Prezzo unitario')).'</small></th>
+    <th class="text-center" style="background-color: #eee"><small>'.($tipo == 'interno' ? tr('Costo netto') : tr('Imponibile')).'</small></th>
+</tr>';
+
+    foreach ($righe as $riga) {
+        $prezzo = $tipo == 'interno' ? $riga->costo_unitario : $riga->prezzo_unitario;
+        $totale = $tipo == 'interno' ? $riga->spesa : $riga->totale_imponibile;
+
+        echo '
+<tr>
+    <td></td>
+    <td colspan="'.(get('id_print') != 24 ? 3 : 2).'"><small>'.$riga->descrizione.'</small></td>
+    <td class="text-center"><small>'.$riga->qta.' '.$riga->um.'</small></td>
+    <td class="text-center"><small>'.($pricing ? moneyFormat($prezzo, $d_importi) : '-').'</small></td>
+    <td class="text-center"><small>'.($pricing ? moneyFormat($totale, $d_importi) : '-').'</small></td>
+</tr>';
+    }
+
+    // Riga di riepilogo con i valori dell'intervento
+    echo '
+<tr>
+    <td colspan="2" class="text-muted" style="border-top: 1px solid #ddd;">'.tr('Totale intervento', [], ['upper' => true]).':</td>
+    <td class="text-center" style="border-top: 1px solid #ddd;">'.($pricing ? $km : '-').'</td>
+    <td class="text-center" style="border-top: 1px solid #ddd;">'.($pricing ? $ore : '-').'</td>
+    <td class="text-center" style="border-top: 1px solid #ddd;">'.($pricing ? moneyFormat($imponibile, $d_importi) : '-').'</td>
+    <td class="text-center" style="border-top: 1px solid #ddd;">'.($pricing && empty($options['dir']) ? moneyFormat($sconto, $d_importi) : '-').'</td>
+    <td class="text-center" style="border-top: 1px solid #ddd;"><b>'.($pricing ? moneyFormat($totale_imponibile, $d_importi) : '-').'</b></td>
+</tr>';
+
+    // Linea di separazione più distinta tra interventi
+    echo '
+<tr>
+    <td colspan="7" style="border-bottom: 1px solid #000; padding: 10px 0;"></td>
+</tr>';
+}
