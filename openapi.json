@@ -1,0 +1,830 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "OpenSTAManager API",
+        "description": "API for OpenSTAManager application",
+        "contact": {
+            "name": "",
+            "url": "",
+            "email": ""
+        },
+        "license": {
+            "name": "",
+            "url": ""
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/",
+            "description": ""
+        }
+    ],
+    "paths": {
+        "/api/datatables/list/{id_module}/{id_plugin}/{id_parent}": {
+            "post": {
+                "operationId": "api_apidatatableslist_id_module_id_plugin_id_parent_post",
+                "tags": [
+                    "DataTablesResource"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "DataTablesResource resource created",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DataTablesResource.DataTablesLoadResponse.jsonld"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DataTablesResource.DataTablesLoadResponse.html"
+                                }
+                            }
+                        },
+                        "links": {}
+                    },
+                    "400": {
+                        "description": "Invalid input",
+                        "links": {}
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "links": {}
+                    }
+                },
+                "summary": "Creates a DataTablesResource resource.",
+                "description": "Creates a DataTablesResource resource.",
+                "parameters": [
+                    {
+                        "name": "id_module",
+                        "in": "path",
+                        "description": "DataTablesResource identifier",
+                        "required": true,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "style": "simple",
+                        "explode": false
+                    },
+                    {
+                        "name": "id_plugin",
+                        "in": "path",
+                        "description": "DataTablesResource identifier",
+                        "required": true,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "style": "simple",
+                        "explode": false
+                    },
+                    {
+                        "name": "id_parent",
+                        "in": "path",
+                        "description": "DataTablesResource identifier",
+                        "required": true,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "style": "simple",
+                        "explode": false
+                    }
+                ],
+                "requestBody": {
+                    "description": "The new DataTablesResource resource",
+                    "content": {
+                        "application/ld+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DataTablesResource.DataTablesLoadRequest"
+                            }
+                        },
+                        "text/html": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DataTablesResource.DataTablesLoadRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/api/impostazione/{id}": {
+            "get": {
+                "operationId": "api_apiimpostazione_id_get",
+                "tags": [
+                    "Impostazione"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Impostazione resource",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Impostazione.jsonld"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Impostazione.html"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "links": {}
+                    }
+                },
+                "summary": "Retrieves a Impostazione resource.",
+                "description": "Retrieves a Impostazione resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Impostazione identifier",
+                        "required": true,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "style": "simple",
+                        "explode": false
+                    }
+                ]
+            },
+            "put": {
+                "operationId": "api_apiimpostazione_id_put",
+                "tags": [
+                    "Impostazione"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Impostazione resource updated",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Impostazione.UpdateImpostazioneResponse.jsonld"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Impostazione.UpdateImpostazioneResponse.html"
+                                }
+                            }
+                        },
+                        "links": {}
+                    },
+                    "400": {
+                        "description": "Invalid input",
+                        "links": {}
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "links": {}
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "links": {}
+                    }
+                },
+                "summary": "Replaces the Impostazione resource.",
+                "description": "Replaces the Impostazione resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Impostazione identifier",
+                        "required": true,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "style": "simple",
+                        "explode": false
+                    }
+                ],
+                "requestBody": {
+                    "description": "The updated Impostazione resource",
+                    "content": {
+                        "application/ld+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Impostazione.UpdateImpostazioneRequest"
+                            }
+                        },
+                        "text/html": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Impostazione.UpdateImpostazioneRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/api/impostazioni": {
+            "get": {
+                "operationId": "api_apiimpostazioni_get_collection",
+                "tags": [
+                    "Impostazione"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Impostazione collection",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Impostazione.jsonld collection.",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/HydraCollectionBaseSchemaNoPagination"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "required": [
+                                                "member"
+                                            ],
+                                            "properties": {
+                                                "member": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#/components/schemas/Impostazione.jsonld"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Impostazione.html"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Retrieves the collection of Impostazione resources.",
+                "description": "Retrieves the collection of Impostazione resources.",
+                "parameters": [
+                    {
+                        "name": "ricerca",
+                        "in": "query",
+                        "description": "Impostazione ricerca",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "style": "form",
+                        "explode": true
+                    },
+                    {
+                        "name": "sezione",
+                        "in": "query",
+                        "description": "Impostazione sezione",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "style": "form",
+                        "explode": true
+                    }
+                ]
+            }
+        },
+        "/api/impostazioni/sezioni": {
+            "get": {
+                "operationId": "api_apiimpostazionisezioni_get",
+                "tags": [
+                    "Impostazione"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Impostazione resource",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Impostazione.ListSezioniImpostazioniResponse.jsonld"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Impostazione.ListSezioniImpostazioniResponse.html"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "links": {}
+                    }
+                },
+                "summary": "Retrieves a Impostazione resource.",
+                "description": "Retrieves a Impostazione resource.",
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Column": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "searchable": {
+                        "type": "boolean"
+                    },
+                    "orderable": {
+                        "type": "boolean"
+                    },
+                    "search": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/Search"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    }
+                }
+            },
+            "DataTablesResource.DataTablesLoadRequest": {
+                "type": "object",
+                "properties": {
+                    "draw": {
+                        "type": "integer"
+                    },
+                    "start": {
+                        "type": "integer"
+                    },
+                    "length": {
+                        "type": "integer"
+                    },
+                    "search": {
+                        "$ref": "#/components/schemas/Search"
+                    },
+                    "order": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/OrderItem"
+                        }
+                    },
+                    "columns": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Column"
+                        }
+                    },
+                    "_": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                }
+            },
+            "DataTablesResource.DataTablesLoadResponse.html": {
+                "type": "object",
+                "properties": {
+                    "draw": {
+                        "type": "integer"
+                    },
+                    "recordsTotal": {
+                        "type": "integer"
+                    },
+                    "recordsFiltered": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "summable": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "avg": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "error": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                }
+            },
+            "DataTablesResource.DataTablesLoadResponse.jsonld": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/HydraItemBaseSchema"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "draw": {
+                                "type": "integer"
+                            },
+                            "recordsTotal": {
+                                "type": "integer"
+                            },
+                            "recordsFiltered": {
+                                "type": "integer"
+                            },
+                            "data": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            },
+                            "summable": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "avg": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "error": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "HydraCollectionBaseSchema": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/HydraCollectionBaseSchemaNoPagination"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "view": {
+                                "type": "object",
+                                "properties": {
+                                    "@id": {
+                                        "type": "string",
+                                        "format": "iri-reference"
+                                    },
+                                    "@type": {
+                                        "type": "string"
+                                    },
+                                    "first": {
+                                        "type": "string",
+                                        "format": "iri-reference"
+                                    },
+                                    "last": {
+                                        "type": "string",
+                                        "format": "iri-reference"
+                                    },
+                                    "previous": {
+                                        "type": "string",
+                                        "format": "iri-reference"
+                                    },
+                                    "next": {
+                                        "type": "string",
+                                        "format": "iri-reference"
+                                    }
+                                },
+                                "example": {
+                                    "@id": "string",
+                                    "@type": "string",
+                                    "first": "string",
+                                    "last": "string",
+                                    "previous": "string",
+                                    "next": "string"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "HydraCollectionBaseSchemaNoPagination": {
+                "type": "object",
+                "properties": {
+                    "totalItems": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "search": {
+                        "type": "object",
+                        "properties": {
+                            "@type": {
+                                "type": "string"
+                            },
+                            "template": {
+                                "type": "string"
+                            },
+                            "variableRepresentation": {
+                                "type": "string"
+                            },
+                            "mapping": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "@type": {
+                                            "type": "string"
+                                        },
+                                        "variable": {
+                                            "type": "string"
+                                        },
+                                        "property": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "required": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "HydraItemBaseSchema": {
+                "type": "object",
+                "properties": {
+                    "@context": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "@vocab": {
+                                        "type": "string"
+                                    },
+                                    "hydra": {
+                                        "type": "string",
+                                        "enum": [
+                                            "http://www.w3.org/ns/hydra/core#"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "@vocab",
+                                    "hydra"
+                                ],
+                                "additionalProperties": true
+                            }
+                        ]
+                    },
+                    "@id": {
+                        "type": "string"
+                    },
+                    "@type": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "@id",
+                    "@type"
+                ]
+            },
+            "Impostazione.ListSezioniImpostazioniResponse.html": {
+                "type": "object",
+                "properties": {
+                    "sezioni": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            },
+            "Impostazione.ListSezioniImpostazioniResponse.jsonld": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/HydraItemBaseSchema"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "sezioni": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "Impostazione.UpdateImpostazioneRequest": {
+                "type": "object",
+                "properties": {
+                    "valore": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Impostazione.UpdateImpostazioneResponse.html": {
+                "type": "object",
+                "properties": {
+                    "edited": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "Impostazione.UpdateImpostazioneResponse.jsonld": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/HydraItemBaseSchema"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "edited": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                ]
+            },
+            "Impostazione.html": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "sezione": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "valore": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "tipo": {
+                        "type": "string"
+                    },
+                    "editable": {
+                        "type": "boolean"
+                    },
+                    "createdAt": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "updatedAt": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                }
+            },
+            "Impostazione.jsonld": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/HydraItemBaseSchema"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "sezione": {
+                                "type": "string"
+                            },
+                            "nome": {
+                                "type": "string"
+                            },
+                            "valore": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "tipo": {
+                                "type": "string"
+                            },
+                            "editable": {
+                                "type": "boolean"
+                            },
+                            "createdAt": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "updatedAt": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "OrderItem": {
+                "type": "object",
+                "properties": {
+                    "column": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "dir": {
+                        "type": "string",
+                        "enum": [
+                            "asc",
+                            "desc"
+                        ]
+                    },
+                    "columnIndex": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "Search": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "type": "string"
+                    },
+                    "regex": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        "responses": {},
+        "parameters": {},
+        "examples": {},
+        "requestBodies": {},
+        "headers": {},
+        "securitySchemes": {
+            "api": {
+                "type": "apiKey",
+                "description": "Value for the X-API-Key header parameter.",
+                "name": "X-API-Key",
+                "in": "header"
+            }
+        }
+    },
+    "security": [
+        {
+            "api": []
+        }
+    ],
+    "tags": [
+        {
+            "name": "DataTablesResource",
+            "description": "Resource 'DataTablesResource' operations."
+        },
+        {
+            "name": "Impostazione",
+            "description": "Resource 'Impostazione' operations."
+        }
+    ],
+    "webhooks": {}
+}
