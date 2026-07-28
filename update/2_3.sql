@@ -16,7 +16,7 @@ UPDATE `zz_modules` SET `name` = REPLACE(`name`, '&agrave;', 'à'), `title` = RE
 
 -- Adattamento della tabella in_interventi
 ALTER TABLE `in_interventi` ADD `id` int(11) NOT NULL;
-CREATE INDEX primary_key ON `in_interventi` (`id`);
+CREATE UNIQUE INDEX primary_key ON `in_interventi` (`id`);
 ALTER TABLE `in_interventi` CHANGE `id` `id` int(11) NOT NULL AUTO_INCREMENT FIRST;
 
 ALTER TABLE `my_impianti_interventi` DROP PRIMARY KEY;
